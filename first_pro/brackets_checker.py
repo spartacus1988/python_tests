@@ -9,9 +9,7 @@ def createParser():
 	parser.add_argument ('-e', '--expression', default='esdfd((esdf)(esdf')
 	return parser
 
-def brackets_checker():
-	text = str(namespace.expression)
-	#print(text)
+def brackets_checker(text):
 	pattern = re.compile(r'\([^\)]+$')
 	#result = re.findall(pattern, text)
 	#print(result)
@@ -26,6 +24,6 @@ if __name__ == '__main__':
 	parser = createParser()
 	namespace = parser.parse_args(sys.argv[1:])
 	#print (namespace)
+	text = str(namespace.expression)
 
-
-	res = brackets_checker()
+	res = brackets_checker(text)
