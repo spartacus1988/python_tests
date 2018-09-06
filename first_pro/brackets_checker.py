@@ -1,4 +1,3 @@
-import unittest
 import re
 import sys
 import argparse
@@ -6,25 +5,21 @@ import argparse
 
 def createParser():
 	parser = argparse.ArgumentParser()
-	parser.add_argument ('expression', nargs='?', default='esdfd((esdf)(esdf')
-	#parser.add_argument ('-e', '--expression', default='esdfd((esdf)(esdf')
+	#parser.add_argument ('expression', nargs='?', default='esdfd((esdf)(esdf')
+	parser.add_argument ('-e', '--expression', default='esdfd((esdf)(esdf')
 	return parser
 
 def brackets_checker():
 	text = str(namespace.expression)
-	print(text)
+	#print(text)
 	pattern = re.compile(r'\([^\)]+$')
+	#result = re.findall(pattern, text)
+	#print(result)
 	result = pattern.sub('', text)
 	if result:
 			print(result)
 			return result
 
-
-class TestMethods(unittest.TestCase):
-
-	def test_brackets_default_expression(self):
-			res = brackets_checker()
-			self.assertEqual(res, 'esdfd((esdf)')
 
 if __name__ == '__main__':
 
@@ -32,4 +27,5 @@ if __name__ == '__main__':
 	namespace = parser.parse_args(sys.argv[1:])
 	#print (namespace)
 
-	unittest.main()
+
+	res = brackets_checker()
